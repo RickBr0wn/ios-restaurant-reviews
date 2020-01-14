@@ -7,7 +7,14 @@
  */
 
 import React from 'react'
-import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native'
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+} from 'react-native'
 import gs from './src/styles'
 
 const restaurants = [
@@ -17,28 +24,41 @@ const restaurants = [
 ]
 
 function App() {
+  const [search, setSearch] = React.useState('')
   return (
     <View style={gs.container}>
       <Text style={gs.header}>Restaurant Reviews</Text>
-      {restaurants.map((place, index) => (
-        <View
-          key={place.name}
-          style={[
-            gs.row,
-            {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
-          ]}>
-          <View style={gs.edges}>
-            <Text>{index + 1}</Text>
+      <TextInput
+        style={gs.input}
+        placeholder="Live Search"
+        onChangeText={text => setSearch(text)}
+        value={search}
+      />
+      {restaurants
+        .filter(
+          place =>
+            !search ||
+            place.name.toLowerCase().indexOf(search.toLowerCase()) > -1,
+        )
+        .map((place, index) => (
+          <View
+            key={place.name}
+            style={[
+              gs.row,
+              {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
+            ]}>
+            <View style={gs.edges}>
+              <Text>{index + 1}</Text>
+            </View>
+            <View style={gs.details}>
+              <Text>{place.name}</Text>
+              <Text style={gs.faded}>{place.address}</Text>
+            </View>
+            <View style={gs.edges}>
+              <Text>Info</Text>
+            </View>
           </View>
-          <View style={gs.details}>
-            <Text>{place.name}</Text>
-            <Text style={gs.faded}>{place.address}</Text>
-          </View>
-          <View style={gs.edges}>
-            <Text>Info</Text>
-          </View>
-        </View>
-      ))}
+        ))}
     </View>
   )
 }

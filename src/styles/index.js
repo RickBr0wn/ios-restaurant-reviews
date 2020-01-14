@@ -28,4 +28,14 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 5,
   },
+  input: {
+    marginBottom: 30,
+    padding: 10,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#444',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#f5f5f5',
+  },
 })
