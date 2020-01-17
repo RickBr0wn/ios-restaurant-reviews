@@ -40,7 +40,6 @@ function App({navigation}) {
   }
 
   if (response && response.data) {
-    console.log(response.data)
     return (
       <View style={globalStyles.container}>
         <View style={globalStyles.logo}>
