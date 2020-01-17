@@ -24,6 +24,7 @@ import restaurants from './src/config/mockData'
 import RestaurantRow from 'components/restaurantRow'
 import {useFetch} from './src/utils/useFetch'
 import Logo from './src/images/pizza.png'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 function App() {
   const [search, setSearch] = React.useState('')
