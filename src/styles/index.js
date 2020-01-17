@@ -22,7 +22,6 @@ export default StyleSheet.create({
     padding: 5,
   },
   input: {
-    marginBottom: 30,
     padding: 10,
     paddingHorizontal: 20,
     fontSize: 16,
@@ -30,5 +29,8 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
     backgroundColor: '#f5f5f5',
+  },
+  scrollView: {
+    paddingTop: 30,
   },
 })
