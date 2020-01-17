@@ -13,6 +13,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 import RestaurantList from 'components/restaurantList'
 import RestaurantInfo from 'components/restaurantInfo'
 import About from 'components/about'
+import AddReview from 'components/addReview'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 const List = createStackNavigator(
@@ -20,44 +21,54 @@ const List = createStackNavigator(
     Home: {
       screen: RestaurantList,
       navigationOptions: {
-        headerShown: false,
-      },
+        headerShown: false
+      }
     },
     Info: {
-      screen: RestaurantInfo,
-    },
+      screen: RestaurantInfo
+    }
   },
   {
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: '#0066cc',
+        backgroundColor: '#0066cc'
       },
-      headerTintColor: '#fff',
-    },
+      headerTintColor: '#fff'
+    }
+  }
+)
+
+const Tabs = createBottomTabNavigator(
+  {
+    List: {screen: List},
+    About: {screen: About}
   },
+  {
+    defaultNavigationOptions: ({navigation}) => ({
+      tabBarIcon: ({tintColor}) => {
+        const route = navigation.state.routeName
+        const name = {
+          List: 'list',
+          About: 'info-circle'
+        }[route]
+        return <Icon name={name} color={tintColor} size={22} />
+      },
+      tabBarOptions: {
+        activeBackgroundColor: '#E6F0FA'
+      }
+    })
+  }
 )
 
 export default createAppContainer(
-  createBottomTabNavigator(
+  createStackNavigator(
+    {Tabs: {screen: Tabs}, AddReview: {screen: AddReview}},
     {
-      List: {screen: List},
-      About: {screen: About},
-    },
-    {
-      defaultNavigationOptions: ({navigation}) => ({
-        tabBarIcon: ({tintColor}) => {
-          const route = navigation.state.routeName
-          console.log('route', route)
-          const name = {
-            List: 'list',
-            About: 'info-circle',
-          }[route]
-          return <Icon name={name} color={tintColor} size={22} />
-        },
-        tabBarOptions: {
-          activeBackgroundColor: '#E6F0FA',
-        },
-      }),
-    },
-  ),
+      mode: 'modal',
+      headerMode: 'none',
+      navigationOptions: {
+        gesturesEnabled: false
+      }
+    }
+  )
 )

@@ -1,6 +1,14 @@
 import React from 'react'
-import {View, Text, ScrollView, Image, StyleSheet} from 'react-native'
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native'
 import Ratings from 'components/rating'
+import globalStyles from 'styles'
 
 const RestaurantInfo = ({navigation}) => {
   const place = navigation.getParam('place')
@@ -15,6 +23,13 @@ const RestaurantInfo = ({navigation}) => {
         <View style={styles.info}>
           <Text style={styles.title}>{place.title}</Text>
           <Ratings rating={place.rating} />
+          <TouchableOpacity
+            style={[globalStyles.button, {marginTop: 20}]}
+            onPress={() => navigation.navigate('AddReview', {place})}>
+            <Text style={[globalStyles.buttonText, {textAlign: 'center'}]}>
+              Add Review
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView style={{flex: 1}}>
@@ -42,32 +57,35 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 30,
+    paddingHorizontal: 30,
+    paddingTop: 10
   },
   infoHeader: {
     flexDirection: 'row',
+    alignItems: 'center'
   },
   info: {
     flex: 1,
     marginTop: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   title: {
     fontSize: 22,
+    marginBottom: 10
   },
   address: {
     color: 'grey',
-    marginBottom: 5,
+    marginBottom: 5
   },
   image: {
     width: 100,
     height: 100,
-    margin: 20,
+    margin: 20
   },
   content: {
     paddingVertical: 30,
-    color: 'grey',
-  },
+    color: 'grey'
+  }
 })
 
 export default RestaurantInfo
