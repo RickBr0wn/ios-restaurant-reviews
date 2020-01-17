@@ -9,6 +9,7 @@ const Ratings = ({rating}) => {
       {stars.map((_, index) => {
         return (
           <Icon
+            key={index.toString()}
             name={Math.floor(rating) > 1 ? 'star' : 'star-half'}
             color="#ffd64c"
           />

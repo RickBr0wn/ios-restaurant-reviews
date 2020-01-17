@@ -3,9 +3,9 @@ import {View, Image, Text, TouchableHighlight} from 'react-native'
 import globalStyles from 'styles'
 import Ratings from 'components/rating'
 
-const RestaurantRow = ({place, index}) => {
+const RestaurantRow = ({place, index, navigation}) => {
   const [showInfo, setShowInfo] = React.useState(false)
-  const infoPressed = () => setShowInfo(prev => !prev)
+  const infoPressed = () => navigation.navigate('Info')
 
   if (!place.rating) {
     place.rating = Math.random() * 4 + 1
@@ -13,7 +13,7 @@ const RestaurantRow = ({place, index}) => {
 
   return (
     <View
-      key={place.name}
+      // key={place.name}
       style={[
         globalStyles.row,
         {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
