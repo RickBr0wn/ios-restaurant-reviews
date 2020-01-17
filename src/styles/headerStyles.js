@@ -10,9 +10,7 @@ export default StyleSheet.create({
     fontWeight: '300',
   },
   iOSHeader: {
-    marginTop: 20,
     padding: 20,
-    paddingTop: 30,
     fontSize: 26,
     textAlign: 'center',
     color: '#0066cc',

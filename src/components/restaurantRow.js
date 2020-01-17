@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TouchableHighlight} from 'react-native'
+import {View, Image, Text, TouchableHighlight} from 'react-native'
 import globalStyles from 'styles'
 
 const RestaurantRow = ({place, index}) => {
@@ -14,14 +14,21 @@ const RestaurantRow = ({place, index}) => {
         {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
       ]}>
       <View style={globalStyles.edges}>
-        <Text>{index + 1}</Text>
+        <Image
+          source={{uri: place.url, height: 50, width: 50, borderRadius: 5}}
+        />
+        {/* <Text>{place.id}</Text> */}
       </View>
       <View style={globalStyles.details}>
-        <Text>{place.name}</Text>
+        <Text>{place.title}</Text>
         <Text style={globalStyles.faded}>{place.address}</Text>
         {showInfo && (
           <View style={globalStyles.info}>
-            <Text>Restaurant Info</Text>
+            <Image
+              source={{uri: place.url}}
+              style={{flex: 1, height: 100}}
+              resizeMode="contain"
+            />
           </View>
         )}
       </View>

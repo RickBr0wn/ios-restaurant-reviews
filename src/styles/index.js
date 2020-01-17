@@ -21,6 +21,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     minWidth: 50,
+    borderRadius: 5,
   },
   input: {
     padding: 10,
@@ -54,5 +55,9 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 3,
     backgroundColor: '#fff',
+  },
+  logo: {
+    paddingTop: 60,
+    alignItems: 'center',
   },
 })
