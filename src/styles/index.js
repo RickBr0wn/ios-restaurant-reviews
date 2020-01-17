@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
 
   faded: {
@@ -10,6 +11,8 @@ export default StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    paddingTop: 5,
+    alignItems: 'center',
   },
   details: {
     flexDirection: 'column',
