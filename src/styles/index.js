@@ -20,6 +20,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 5,
+    minWidth: 50,
   },
   input: {
     padding: 10,
@@ -32,5 +33,26 @@ export default StyleSheet.create({
   },
   flatList: {
     paddingTop: 30,
+  },
+  info: {
+    marginHorizontal: 40,
+    marginVertical: 10,
+    padding: 10,
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: '#0066cc',
+    fontSize: 12,
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#0066CC',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    backgroundColor: '#fff',
   },
 })
