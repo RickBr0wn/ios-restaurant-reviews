@@ -5,7 +5,7 @@ import Ratings from 'components/rating'
 
 const RestaurantRow = ({place, index, navigation}) => {
   const [showInfo, setShowInfo] = React.useState(false)
-  const infoPressed = () => navigation.navigate('Info')
+  const infoPressed = () => navigation.navigate('Info', {place})
 
   if (!place.rating) {
     place.rating = Math.random() * 4 + 1
@@ -13,7 +13,6 @@ const RestaurantRow = ({place, index, navigation}) => {
 
   return (
     <View
-      // key={place.name}
       style={[
         globalStyles.row,
         {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
@@ -22,7 +21,6 @@ const RestaurantRow = ({place, index, navigation}) => {
         <Image
           source={{uri: place.url, height: 50, width: 50, borderRadius: 5}}
         />
-        {/* <Text>{place.id}</Text> */}
       </View>
       <View style={globalStyles.details}>
         <Text>{place.title}</Text>
