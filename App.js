@@ -14,8 +14,10 @@ import {
   View,
   Text,
   TextInput,
+  Platform,
 } from 'react-native'
-import gs from './src/styles'
+import globalStyles from './src/styles'
+import Header from './src/components/header'
 
 const restaurants = [
   {name: 'React Cafe', address: '123 Anywhere St'},
@@ -25,11 +27,12 @@ const restaurants = [
 
 function App() {
   const [search, setSearch] = React.useState('')
+
   return (
-    <View style={gs.container}>
-      <Text style={gs.header}>Restaurant Reviews</Text>
+    <View style={globalStyles.container}>
+      <Header />
       <TextInput
-        style={gs.input}
+        style={globalStyles.input}
         placeholder="Live Search"
         onChangeText={text => setSearch(text)}
         value={search}
@@ -44,17 +47,17 @@ function App() {
           <View
             key={place.name}
             style={[
-              gs.row,
+              globalStyles.row,
               {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
             ]}>
-            <View style={gs.edges}>
+            <View style={globalStyles.edges}>
               <Text>{index + 1}</Text>
             </View>
-            <View style={gs.details}>
+            <View style={globalStyles.details}>
               <Text>{place.name}</Text>
-              <Text style={gs.faded}>{place.address}</Text>
+              <Text style={globalStyles.faded}>{place.address}</Text>
             </View>
-            <View style={gs.edges}>
+            <View style={globalStyles.edges}>
               <Text>Info</Text>
             </View>
           </View>

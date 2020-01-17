@@ -4,14 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    marginTop: 20,
-    padding: 40,
-    fontSize: 30,
-    textAlign: 'center',
-    color: '#0066cc',
-    fontWeight: '300',
-  },
+
   faded: {
     color: 'grey',
   },
