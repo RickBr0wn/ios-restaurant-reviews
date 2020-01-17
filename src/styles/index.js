@@ -30,7 +30,7 @@ export default StyleSheet.create({
     borderColor: '#ddd',
     backgroundColor: '#f5f5f5',
   },
-  scrollView: {
+  flatList: {
     paddingTop: 30,
   },
 })

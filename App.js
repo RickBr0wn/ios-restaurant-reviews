@@ -15,10 +15,12 @@ import {
   Text,
   TextInput,
   Platform,
+  FlatList,
 } from 'react-native'
 import globalStyles from 'styles'
 import Header from 'components/header'
 import restaurants from './src/config/mockData'
+import RestaurantRow from 'components/restaurantRow'
 
 function App() {
   const [search, setSearch] = React.useState('')
@@ -32,33 +34,18 @@ function App() {
         onChangeText={text => setSearch(text)}
         value={search}
       />
-      <ScrollView contentContainerStyle={globalStyles.scrollView}>
-        {restaurants
-          .filter(
-            place =>
-              !search ||
-              place.name.toLowerCase().indexOf(search.toLowerCase()) > -1,
-          )
-          .map((place, index) => (
-            <View
-              key={place.name}
-              style={[
-                globalStyles.row,
-                {backgroundColor: index % 2 === 0 ? 'white' : '#F3F3F7'},
-              ]}>
-              <View style={globalStyles.edges}>
-                <Text>{index + 1}</Text>
-              </View>
-              <View style={globalStyles.details}>
-                <Text>{place.name}</Text>
-                <Text style={globalStyles.faded}>{place.address}</Text>
-              </View>
-              <View style={globalStyles.edges}>
-                <Text>Info</Text>
-              </View>
-            </View>
-          ))}
-      </ScrollView>
+      <FlatList
+        style={globalStyles.flatList}
+        data={restaurants.filter(
+          place =>
+            !search ||
+            place.name.toLowerCase().indexOf(search.toLowerCase()) > -1,
+        )}
+        renderItem={({item, index}) => (
+          <RestaurantRow place={item} index={index} keyExtractor={item.name} />
+        )}
+        initialNumToRender={16}
+      />
     </View>
   )
 }
