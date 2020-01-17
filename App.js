@@ -16,8 +16,8 @@ import {
   TextInput,
   Platform,
 } from 'react-native'
-import globalStyles from './src/styles'
-import Header from './src/components/header'
+import globalStyles from 'styles'
+import Header from 'components/header'
 
 const restaurants = [
   {name: 'React Cafe', address: '123 Anywhere St'},
