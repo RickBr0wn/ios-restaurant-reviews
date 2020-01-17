@@ -1,10 +1,15 @@
 import React from 'react'
 import {View, Image, Text, TouchableHighlight} from 'react-native'
 import globalStyles from 'styles'
+import Ratings from 'components/rating'
 
 const RestaurantRow = ({place, index}) => {
   const [showInfo, setShowInfo] = React.useState(false)
   const infoPressed = () => setShowInfo(prev => !prev)
+
+  if (!place.rating) {
+    place.rating = Math.random() * 4 + 1
+  }
 
   return (
     <View
@@ -22,6 +27,9 @@ const RestaurantRow = ({place, index}) => {
       <View style={globalStyles.details}>
         <Text>{place.title}</Text>
         <Text style={globalStyles.faded}>{place.address}</Text>
+        <View style={{flexDirection: 'row', paddingBottom: 5}}>
+          <Ratings rating={place.rating} />
+        </View>
         {showInfo && (
           <View style={globalStyles.info}>
             <Image

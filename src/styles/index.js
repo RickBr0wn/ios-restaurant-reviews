@@ -10,6 +10,8 @@ export default StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    paddingTop: 5,
+    alignItems: 'center',
   },
   details: {
     flexDirection: 'column',
